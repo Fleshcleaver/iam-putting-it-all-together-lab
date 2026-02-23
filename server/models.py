@@ -10,7 +10,7 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False, unique=True)
-    _password_hash = db.Column(db.String, nullable=False)
+    _password_hash = db.Column(db.String)
     image_url = db.Column(db.String)
     bio = db.Column(db.String)
 
@@ -59,3 +59,4 @@ class RecipeSchema(Schema):
     instructions = fields.Str()
     minutes_to_complete = fields.Int()
     user_id = fields.Int()
+    user = fields.Nested(UserSchema)
